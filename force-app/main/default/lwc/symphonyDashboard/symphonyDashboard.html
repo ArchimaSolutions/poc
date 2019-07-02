@@ -1,0 +1,49 @@
+<template>
+    <article class="slds-card">
+        <div class="slds-grid slds-gutters slds-wrap slds-m-left_medium">
+            <div class="slds-col slds-size_2-of-3">
+                <template if:false={showNoQuotes}>
+                <!--    <lightning-datatable
+                        data={theQuotes.data}
+                        columns={columns}
+                        key-field="id"
+                        onrowselection={handleRowClick}>
+                    </lightning-datatable> -->
+                    <lightning-accordion allow-multiple-sections-open={multiple}>
+                        <template for:each={theQuotes} for:item="aQuote">
+                            <lightning-accordion-section name={aQuote.Customer_Name__c} label={aQuote.Customer_Name__c} key={aQuote.Id}>
+                                <div class="slds-grid slds-gutters slds-wrap">
+                                    <div class="slds-col slds-size_1-of-4">
+                                        <h4>Quote Initiated <br /></h4>
+                                        {aQuote.Quote_Initiated__c}                                        
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-4">
+                                        <h4>Estimated Coverage Start <br /></h4>
+                                        {aQuote.Estimate_Coverage_Start__c}
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-4">
+                                        <h4>Status <br /></h4>
+                                        {aQuote.Status__c}
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-4">
+                                            <h4>Primary Contact <br /></h4>
+                                            {aQuote.TheFirst_Name__c} {aQuote.TheLast_Name__c}
+                                        </div>
+                                    </div>
+                            </lightning-accordion-section>           
+                        </template>
+                        <!--<template for:each={theQuotes} for:item="aQuote">
+                            A
+                                <lightning-accordion-section name={aQuote.Name} label={aQuote.Name} key={aQuote.Id}>
+                                    Primary Contact: {aQuote.TheFirst_Name__c} {aQuote.TheLast_Name__c}                                    
+                                </lightning-accordion-section> 
+                        </template>-->
+                    </lightning-accordion> 
+                </template> 
+            <template if:true={showNoQuotes}>
+                    <h3>No Quotes in Progress</h3>
+                </template>
+            </div>
+        </div>
+    </article>
+</template>
