@@ -1,8 +1,9 @@
 <template>
     <div class="longBox">
-        <lightning-accordion-section name={aQuote.Account.Name} label={aQuote.Account.Name} key={aQuote.Id} onclick={handleSectionClick}>
-            <div class="slds-grid slds-gutters slds-wrap">
+        <lightning-accordion-section name={aQuote.Account.Name} label={aQuote.Account.Name} key={aQuote.Id}>
+            <div class="slds-grid slds-gutters slds-wrap slds-m-left_medium">
                 <div class="slds-col slds-size_1-of-4">
+                    <a href="#" onclick={handleSectionClick}>Show Record</a>
                 </div>
                 <div class="slds-col slds-size_1-of-4">
                     {aQuote.Quote_Initiated__c}                                        
