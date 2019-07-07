@@ -3,11 +3,11 @@
         "experimentalDecorators": true,
         "baseUrl": ".",
         "paths": {
-            "c/SymphonyDashboard": [
-                "SymphonyDashboard/SymphonyDashboard.js"
-            ],
             "c/symphonyDashboard": [
                 "symphonyDashboard/symphonyDashboard.js"
+            ],
+            "c/symphonyShowQuoteList": [
+                "symphonyShowQuoteList/symphonyShowQuoteList.js"
             ]
         }
     },

@@ -1,0 +1,20 @@
+<template>
+    <div class="longBox">
+        <lightning-accordion-section name={aQuote.Customer_Name__c} label={aQuote.Customer_Name__c} key={aQuote.Id}>
+            <div class="slds-grid slds-gutters slds-wrap">
+                <div class="slds-col slds-size_1-of-4">
+                </div>
+                <div class="slds-col slds-size_1-of-4">
+                    {aQuote.Quote_Initiated__c}                                        
+                </div>
+                <div class="slds-col slds-size_1-of-4">
+                    {aQuote.Estimate_Coverage_Start__c}
+                </div>
+                <div class="slds-col slds-size_1-of-4">
+                    {aQuote.Status__c}
+                </div>
+            </div>
+        </lightning-accordion-section>
+    </div>
+    
+</template>

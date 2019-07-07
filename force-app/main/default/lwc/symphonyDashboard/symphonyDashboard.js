@@ -1,7 +1,7 @@
 import { LightningElement, wire, track } from 'lwc';
 import { getRecord } from 'lightning/uiRecordApi';
 import { NavigationMixin } from 'lightning/navigation';
-import getQuotes from '@salesforce/apex/demoTest.getQuotes';
+import getQuotes from '@salesforce/apex/symphonyGetQuotes.getQuotes';
 
 import USER_ID from '@salesforce/user/Id';
 
@@ -28,8 +28,10 @@ export default class Screen1 extends NavigationMixin(LightningElement) {
     @track columns = columns;
     @track theQuotes;
     @track quoteErrors;
-    @track multiple = false;
+    @track multiple = true;
     @track getId = 111;
+    @track quotesInProgress = 0;
+    @track pastQuotes = 0;
 
     //@wire(getQuotes) theQuotes;
     @wire(getQuotes)
@@ -39,12 +41,15 @@ export default class Screen1 extends NavigationMixin(LightningElement) {
     }) {
         if(data) {
             this.theQuotes = data;
-            // eslint-disable-next-line no-console
-            console.log(JSON.stringify(this.theQuotes));
+            for(let x = 0; x < data.length; x++) {
+                if(data[x].Quote_Finished__c) {
+                    this.pastQuotes++;
+                } else {
+                    this.quotesInProgress++;
+                }
+            }
         } else if (error) {
             this.theError2 = error;
-            // eslint-disable-next-line no-console
-            console.log(JSON.stringify(this.theError2));
         }
     }
     @wire(getRecord,{
@@ -61,11 +66,8 @@ export default class Screen1 extends NavigationMixin(LightningElement) {
         }
     }
     get showNoQuotes() {
+        //Cheap code, need to fix
         var result = false;
-        //eslint-disable-next-line no-console      
-        console.log(JSON.stringify(this.theQuotes));
-        //console.log(JSON.stringify(this.theQuotes.data));
-        //if(JSON.stringify(this.theQuotes.data) === '[]') {
         if(JSON.stringify(this.theQuotes) === '[]') {
             result = true;
         }

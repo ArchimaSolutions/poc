@@ -1,36 +1,48 @@
 <template>
     <article class="slds-card">
         <div class="slds-grid slds-gutters slds-wrap slds-m-left_medium">
-            <div class="slds-col slds-size_2-of-3">
+            <div class="slds-col slds-size_3-of-3">
                 <template if:false={showNoQuotes}>
-                <!--    <lightning-datatable
-                        data={theQuotes.data}
-                        columns={columns}
-                        key-field="id"
-                        onrowselection={handleRowClick}>
-                    </lightning-datatable> -->
                     <lightning-accordion allow-multiple-sections-open={multiple}>
+                        <h3>{quotesInProgress} Quotes in Progress</h3>
+                        <div class="slds-grid slds-gutters slds-wrap slds-m-left_medium">
+                            <div class="slds-col slds-size_1-of-4">
+                                <h4>Client</h4>
+                            </div>
+                            <div class="slds-col slds-size_1-of-4">
+                                <h4>Quote Initiated</h4>
+                            </div>
+                            <div class="slds-col slds-size_1-of-4">
+                                <h4>Effective Date</h4>
+                            </div>
+                            <div class="slds-col slds-size_1-of-4">
+                                <h4>Status</h4>
+                            </div>
+                        </div>                 
                         <template for:each={theQuotes} for:item="aQuote">
-                            <lightning-accordion-section name={aQuote.Customer_Name__c} label={aQuote.Customer_Name__c} key={aQuote.Id}>
-                                <div class="slds-grid slds-gutters slds-wrap">
-                                    <div class="slds-col slds-size_1-of-4">
-                                        <h4>Quote Initiated <br /></h4>
-                                        {aQuote.Quote_Initiated__c}                                        
-                                    </div>
-                                    <div class="slds-col slds-size_1-of-4">
-                                        <h4>Estimated Coverage Start <br /></h4>
-                                        {aQuote.Estimate_Coverage_Start__c}
-                                    </div>
-                                    <div class="slds-col slds-size_1-of-4">
-                                        <h4>Status <br /></h4>
-                                        {aQuote.Status__c}
-                                    </div>
-                                    <div class="slds-col slds-size_1-of-4">
-                                            <h4>Primary Contact <br /></h4>
-                                            {aQuote.TheFirst_Name__c} {aQuote.TheLast_Name__c}
-                                        </div>
-                                    </div>
-                            </lightning-accordion-section>           
+                            <template if:false={aQuote.Quote_Finished__c}>
+                                <c-symphony-show-quote-list a-quote={aQuote} key={aQuote.Id}></c-symphony-show-quote-list>
+                            </template>
+                        </template>
+                        <h3>{pastQuotes} Past Quotes</h3>
+                        <div class="slds-grid slds-gutters slds-wrap slds-m-left_medium">
+                            <div class="slds-col slds-size_1-of-4">
+                                <h4>Client</h4>
+                            </div>
+                            <div class="slds-col slds-size_1-of-4">
+                                <h4>Quote Initiated</h4>
+                            </div>
+                            <div class="slds-col slds-size_1-of-4">
+                                <h4>Effective Date</h4>
+                            </div>
+                            <div class="slds-col slds-size_1-of-4">
+                                <h4>Status</h4>
+                            </div>
+                        </div>                 
+                        <template for:each={theQuotes} for:item="aQuote">
+                            <template if:true={aQuote.Quote_Finished__c}>
+                                <c-symphony-show-quote-list a-quote={aQuote} key={aQuote.Id}></c-symphony-show-quote-list>
+                            </template>
                         </template>
                         <!--<template for:each={theQuotes} for:item="aQuote">
                             A
