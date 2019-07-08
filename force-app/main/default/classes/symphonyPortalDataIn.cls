@@ -29,7 +29,11 @@ global with sharing class symphonyPortalDataIn {
         	ContactId=theBroker.Id, RecordTypeId=symphonyQuote,Name=String.valueOf(Date.Today().year()) + ' New Business-' + name, OpportunityId=newOpportunity.Id,
             vlocity_ins__EffectiveDate__c=Date.Today()+90, Symphony_Status__c='Group Profile'
         );
-		insert newQuote;
-        
+		insert newQuote;        
     }
+    @HttpGet
+    global static List<Quote> goGet() {
+        List<Quote> theQuotes = [SELECT Id, Name, Account.Name, CreatedDate, Symphony_Status__c, vlocity_ins__EffectiveDate__c, Quote_Initiated__c FROM Quote WHERE ContactId = '0031900000Y7VgIAAV'];
+        return theQuotes;
+    } 
 }

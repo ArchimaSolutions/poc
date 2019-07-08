@@ -73,25 +73,12 @@ export default class Screen1 extends NavigationMixin(LightningElement) {
         }
         return result;
     }
-    handleScreenNav() {
+    handleClickNewQuote() {
         this[NavigationMixin.Navigate]({
-            type: 'comm__namedPage',
+            type: 'standard__navItemPage',
             attributes: {
-                pageName: 'page2',
+                apiName: 'Symphony_Create_Quote',
             },
         });    
     }
-    handleRowClick(event) {
-        const selectedRow = event.detail.selectedRows;
-        this[NavigationMixin.Navigate]({
-            type: 'comm__namedPage',
-            attributes: {
-                pageName: 'page2'
-            },
-            state: {
-                recordId: selectedRow[0].Id
-            }
-        })
-    }
-
 }

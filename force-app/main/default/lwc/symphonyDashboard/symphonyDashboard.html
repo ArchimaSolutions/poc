@@ -1,6 +1,17 @@
 <template>
     <article class="slds-card">
         <div class="slds-grid slds-gutters slds-wrap slds-m-left_medium">
+            <div class="slds-col slds-size_2-of-3">
+            </div>
+            <div class="slds-col slds-size_1-of-3">
+                <lightning-button
+                class="slds-m-top_small slds-m-left_large"
+                variant="brand"
+                name="StartQuote"
+                label="Start a New Quote"
+                onclick={handleClickNewQuote}>
+                </lightning-button>
+            </div>
             <div class="slds-col slds-size_3-of-3">
                 <template if:false={showNoQuotes}>
                     <lightning-accordion allow-multiple-sections-open={multiple}>
@@ -44,12 +55,6 @@
                                 <c-symphony-show-quote-list a-quote={aQuote} key={aQuote.Id}></c-symphony-show-quote-list>
                             </template>
                         </template>
-                        <!--<template for:each={theQuotes} for:item="aQuote">
-                            A
-                                <lightning-accordion-section name={aQuote.Name} label={aQuote.Name} key={aQuote.Id}>
-                                    Primary Contact: {aQuote.TheFirst_Name__c} {aQuote.TheLast_Name__c}                                    
-                                </lightning-accordion-section> 
-                        </template>-->
                     </lightning-accordion> 
                 </template> 
             <template if:true={showNoQuotes}>

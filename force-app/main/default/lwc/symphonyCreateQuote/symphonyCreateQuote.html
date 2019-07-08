@@ -1,0 +1,57 @@
+<template>
+    <article class="slds-card">
+        <div class="slds-grid slds-gutters slds-m-left_medium">
+            <div class="slds-col slds-size_2-of-3">
+                <p class="top">Let's Begin</p>
+                <p class="second">Your Client's Information</p>
+                <lightning-record-edit-form 
+                object-api-name={accountObject} 
+                onsuccess={handleRecordCreated}
+                record-id={recordId}>
+                    <lightning-messages></lightning-messages>
+                    <lightning-input-field field-name={name} variant="label-stacked"></lightning-input-field>
+                    <lightning-input-field field-name={street} variant="label-stacked"></lightning-input-field>
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning-input-field class="short" field-name={zip} variant="label-stacked"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning-input-field class="short" field-name={county} variant="label-stacked"></lightning-input-field>
+                        </div>
+                    </div>
+                    <lightning-input-field field-name={employees} variant="label-stacked"></lightning-input-field>
+                    <lightning-input-field field-name={industry} variant="label-stacked"></lightning-input-field>
+                    <p class="second">Primary Contact</p>
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning-input-field field-name={firstname} variant="label-stacked"></lightning-input-field>
+                            <lightning-input-field field-name={phone} variant="label-stacked"></lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-m-left_medium">
+                            <lightning-input-field field-name={lastname} variant="label-stacked"></lightning-input-field>
+                            <lightning-input-field field-name={email} variant="label-stacked"></lightning-input-field>        
+                        </div>
+                    </div>
+
+                    <lightning-button
+                    class="slds-m-top_small"
+                    variant="brand"
+                    type="cancel"
+                    name="cancel"
+                    label="Cancel"
+                    onclick={handleCancel}>
+                    </lightning-button>
+                    <lightning-button
+                    class="slds-m-top_small slds-m-left_medium"
+                    variant="brand"
+                    type="submit"
+                    name="next"
+                    label="Next">
+                    </lightning-button>
+                </lightning-record-edit-form>
+            </div>
+            <div class="slds-col slds-size_1-of-3">
+            </div>
+        </div>
+    </article>
+</template>
