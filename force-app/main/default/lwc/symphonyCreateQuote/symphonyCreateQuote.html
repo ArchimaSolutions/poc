@@ -9,27 +9,31 @@
                 onsuccess={handleRecordCreated}
                 record-id={recordId}>
                     <lightning-messages></lightning-messages>
-                    <lightning-input-field field-name={name} variant="label-stacked"></lightning-input-field>
-                    <lightning-input-field field-name={street} variant="label-stacked"></lightning-input-field>
+                    <lightning-input-field field-name={name} onchange={handleNameChange} variant="label-stacked"></lightning-input-field>
+                    <lightning-input-field field-name={street} onchange={handleStreetChange} variant="label-stacked"></lightning-input-field>
                     <div class="slds-grid slds-gutters">
                         <div class="slds-col slds-size_1-of-2">
-                            <lightning-input-field class="short" field-name={zip} variant="label-stacked"></lightning-input-field>
+                            <lightning-input-field class="short" field-name={zip} onchange={handlePostalCodeChange} variant="label-stacked"></lightning-input-field>
                         </div>
                         <div class="slds-col slds-size_1-of-2">
-                            <lightning-input-field class="short" field-name={county} variant="label-stacked"></lightning-input-field>
+                            <lightning-input-field class="short" field-name={county} onchange={handleCountyChange} variant="label-stacked"></lightning-input-field>
                         </div>
                     </div>
-                    <lightning-input-field field-name={employees} variant="label-stacked"></lightning-input-field>
-                    <lightning-input-field field-name={industry} variant="label-stacked"></lightning-input-field>
+                    <lightning-input-field field-name={employees} onchange={handleEmployeesChange} variant="label-stacked"></lightning-input-field>
+                    <lightning-input-field field-name={industry} onchange={handleIndustryChange} variant="label-stacked"></lightning-input-field>
+                </lightning-record-edit-form>
+                <lightning-record-edit-form 
+                object-api-name={contactObject} 
+                record-id={recordId}>
                     <p class="second">Primary Contact</p>
                     <div class="slds-grid slds-gutters">
                         <div class="slds-col slds-size_1-of-2">
-                            <lightning-input-field field-name={firstname} variant="label-stacked"></lightning-input-field>
-                            <lightning-input-field field-name={phone} variant="label-stacked"></lightning-input-field>
+                            <lightning-input-field field-name={firstname} onchange={handleFirstNameChange} variant="label-stacked"></lightning-input-field>
+                            <lightning-input-field field-name={phone} onchange={handlePhoneChange} variant="label-stacked"></lightning-input-field>
                         </div>
                         <div class="slds-col slds-size_1-of-2 slds-m-left_medium">
-                            <lightning-input-field field-name={lastname} variant="label-stacked"></lightning-input-field>
-                            <lightning-input-field field-name={email} variant="label-stacked"></lightning-input-field>        
+                            <lightning-input-field field-name={lastname} onchange={handleLastNameChange} variant="label-stacked"></lightning-input-field>
+                            <lightning-input-field field-name={email} onchange={handleEmailChange} variant="label-stacked"></lightning-input-field>        
                         </div>
                     </div>
 
@@ -44,10 +48,10 @@
                     <lightning-button
                     class="slds-m-top_small slds-m-left_medium"
                     variant="brand"
-                    type="submit"
                     name="next"
+                    onclick={handleRecordCreated}
                     label="Next">
-                    </lightning-button>
+                </lightning-button>
                 </lightning-record-edit-form>
             </div>
             <div class="slds-col slds-size_1-of-3">
