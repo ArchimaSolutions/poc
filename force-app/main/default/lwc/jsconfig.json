@@ -3,14 +3,17 @@
         "experimentalDecorators": true,
         "baseUrl": ".",
         "paths": {
+            "c/symphonyCreateQuote": [
+                "symphonyCreateQuote/symphonyCreateQuote.js"
+            ],
             "c/symphonyDashboard": [
                 "symphonyDashboard/symphonyDashboard.js"
             ],
             "c/symphonyShowQuoteList": [
                 "symphonyShowQuoteList/symphonyShowQuoteList.js"
             ],
-            "c/symphonyCreateQuote": [
-                "symphonyCreateQuote/symphonyCreateQuote.js"
+            "c/symphonyShowRecomendationPayload": [
+                "symphonyShowRecomendationPayload/symphonyShowRecomendationPayload.js"
             ]
         }
     },
