@@ -48,7 +48,7 @@ public with sharing class symphonyCreateRecomendationPayload {
         public String employeeAgeRanges {get; set;}
     }
     @AuraEnabled(cacheable=true)
-    public static String createPayload(Id oppId, Id censusId) {
+    public static String createPayload(Id oppId, Id censusId, Id quoteId) {
         //Quick and dirty, better ways to figure this out in the future
         RecomendationPayload createPayload = new RecomendationPayload();
         List<Census_Member_Reimagine_POC__c> allMales = [SELECT Id FROM Census_Member_Reimagine_POC__c WHERE Gender__c = 'M' AND Census__c = :censusId];
@@ -114,6 +114,12 @@ public with sharing class symphonyCreateRecomendationPayload {
         createPayload.currentFamilyDeductibleInNetwork = priorEOB.Current_Family_Deductible_In_Network__c;
         createPayload.currentFamilyDeductibleOON = priorEOB.Current_Family_Deductible_OON__c;
         createPayload.sicDivision = oppWithAccount.Account.Sic;
+
+        //Recommendation_Request_Reimagine_POC__c newRecRequest = new Recommendation_Request_Reimagine_POC__c();
+        //newRecRequest.Average_age_of_Employees__c = 42;
+        //newRecRequest.Average_Premium_Payment__c = priorEOB.AVG_PREM_PMPM__c;
+        //newRecRequest.Quote__c = quoteId;
+        //insert newRecRequest;
 
         return JSON.serialize(createPayload);
     }
