@@ -27,14 +27,16 @@ global with sharing class symphonyPortalDataIn {
         insert newContact;
 
     	Opportunity newOpportunity = new Opportunity(
-        	Name=String.valueOf(Date.Today().year()) + ' New Business-' + name, AccountId=newAccount.Id,CloseDate=Date.Today()+30,StageName='Initiated', RecordTypeId=symphonyOpportunity
+        	Name=String.valueOf(Date.Today().year()) + ' New Business-' + name, AccountId=newAccount.Id,CloseDate=Date.Today()+30,StageName='Initiated', RecordTypeId=symphonyOpportunity,
+            Pricebook2Id='01s41000007wBCZAA2'
     	);
     	insert newOpportunity;
         
         Quote newQuote = new Quote(
         	ContactId=theBroker.Id, RecordTypeId=symphonyQuote,Name=String.valueOf(Date.Today().year()) + ' New Business-' + name, OpportunityId=newOpportunity.Id,
             vlocity_ins__EffectiveDate__c=Date.Today()+90, Symphony_Status__c='Group Profile', sym_Family_Deductible__c=9000.00,
-            sym_Family_Maximum_Out_of_Pocket__c=13000.00, sym_Individual_Deductible__c=2500.00, sym_Individual_Maximum_Out_of_Pocket__c=3800.00
+            sym_Family_Maximum_Out_of_Pocket__c=13000.00, sym_Individual_Deductible__c=2500.00, sym_Individual_Maximum_Out_of_Pocket__c=3800.00,
+            Pricebook2Id='01s41000007wBCZAA2'
         );
 		insert newQuote;  
         theReturn ret = new theReturn(String.valueOf(newAccount.Id));
