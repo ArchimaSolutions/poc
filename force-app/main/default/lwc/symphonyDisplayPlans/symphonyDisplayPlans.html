@@ -1,0 +1,33 @@
+<template>
+        <template if:true={result}>
+            <div class="total">{result}</div>
+        </template>
+        <div class="slds-grid slds-gutters slds-wrap">
+        <template for:each={quoteData.QuoteLineItems} for:item="lineItem">
+            <div class="slds-col slds-size_1-of-3 slds-m-bottom_large" key={lineItem.Id} data-item={lineItem.Id} onclick={selectPlan}>
+                <div class="plan">{lineItem.Product2.Name}</div>
+                <div class="rating">Average Monthly Premium</div>
+                <div class="total">${lineItem.Product2.symphony_Temp_Rate__c}.00</div>
+                <div class="right">{lineItem.Product2.E2E_Symphony_Deductible__c}</div>
+                <div class="left">Deductible</div><br/>
+                <div class="right">{lineItem.Product2.E2E_Symphony_Primary_Care_Copay__c}</div>
+                <div class="left">Primary Care Copay</div><br/>
+                <div class="right">{lineItem.Product2.E2E_Symphony_Specialist_Copay__c}</div>
+                <div class="left">Specialist Copay</div><br/>
+                <div class="right">{lineItem.Product2.E2E_Symphony_Maximum_Out_of_Pocket__c}</div>
+                <div class="left">Maximum Out-of-Pocket</div><br/>
+                <div class="right">{lineItem.Product2.E2E_Symphony_Coinsurance__c}</div>
+                <div class="left">Coinsurance</div><br/>
+                <div class="header">Pharmacy Included</div>
+                <div class="right">{lineItem.Product2.E2E_Symphony_Rx_network__c}</div>
+                <div class="left">Rx Network</div><br/>
+                <div class="right">{lineItem.Product2.E2E_Symphony_Coinsurance_Pharmacy__c}</div>
+                <div class="left">Coinsurance</div><br/>
+                <div class="right">{lineItem.Product2.E2E_Sympony_Rx_Plan__c}</div>
+                <div class="left">Rx Plan</div><br/>
+                <div class="right">{lineItem.Product2.E2E_Symphony_Preventative_Drugs_Covered__c}</div>
+                <div class="left">Preventative Drugs Covered</div><br/>
+            </div>    
+        </template>
+      </div>
+</template>

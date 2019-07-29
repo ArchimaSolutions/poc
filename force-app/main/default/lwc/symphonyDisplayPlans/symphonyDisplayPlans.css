@@ -1,0 +1,42 @@
+.plan {
+    background-color: #D1D1D1;
+    padding: 15px;
+    color: blue;
+}
+
+.rating {
+    text-align: center;
+    padding: 10px 0px;
+}
+
+.total {
+    font-size: 14pt;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px 0px;
+}
+
+.highlight {
+    border: 2px solid yellow;
+}
+
+.header {
+    font-weight: bold;
+    padding: 10px 0px;
+}
+
+span {
+    display: block;
+}
+
+.rightJ {
+    text-align: right;
+}
+
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}

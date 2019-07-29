@@ -9,6 +9,12 @@
             "c/symphonyDashboard": [
                 "symphonyDashboard/symphonyDashboard.js"
             ],
+            "c/symphonyDisplayPlans": [
+                "symphonyDisplayPlans/symphonyDisplayPlans.js"
+            ],
+            "c/symphonyFineTuneRecommendation": [
+                "symphonyFineTuneRecommendation/symphonyFineTuneRecommendation.js"
+            ],
             "c/symphonyShowQuoteList": [
                 "symphonyShowQuoteList/symphonyShowQuoteList.js"
             ],
