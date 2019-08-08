@@ -3,9 +3,11 @@ global with sharing class symphonyPortalDataIn {
     global class theReturn {
         public String accountId;
         public String quoteId;
-        public theReturn(String aId, String qId) {
+        public String symphonyStatus;
+        public theReturn(String aId, String qId, String s) {
             this.accountId = aId;
             this.quoteId = qId;
+            this.symphonyStatus = s;
         }
     }
     @HttpPost
@@ -38,10 +40,11 @@ global with sharing class symphonyPortalDataIn {
         	ContactId=theBroker.Id, RecordTypeId=symphonyQuote,Name=String.valueOf(Date.Today().year()) + ' New Business-' + name, OpportunityId=newOpportunity.Id,
             vlocity_ins__EffectiveDate__c=Date.Today()+90, Symphony_Status__c='Group Profile', sym_Family_Deductible__c=9000.00,
             sym_Family_Maximum_Out_of_Pocket__c=13000.00, sym_Individual_Deductible__c=2500.00, sym_Individual_Maximum_Out_of_Pocket__c=3800.00,
-            Pricebook2Id='01s41000007wBCZAA2', Sym_Effective_Date__c=Date.Parse(effectiveDate)
+            Pricebook2Id='01s41000007wBCZAA2', Sym_Effective_Date__c=Date.Parse(effectiveDate), Sym_Employer_Main_Contact_Email__c=email,
+            Sym_Employer_Main_Contact_Name__c=firstName + ' ' + lastName
         );
 		insert newQuote;  
-        theReturn ret = new theReturn(String.valueOf(newAccount.Id), String.valueOf(newQuote.Id));
+        theReturn ret = new theReturn(String.valueOf(newAccount.Id), String.valueOf(newQuote.Id),newQuote.Symphony_Status__c);
         return ret;
     }
     @HttpGet

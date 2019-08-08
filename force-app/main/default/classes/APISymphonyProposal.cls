@@ -2,14 +2,15 @@
  * Symphony Proposal API
  * 
  * POST /proposal/
- * 
+ * PUT /proposal/quoteId
+ *
  */
 @RestResource(urlMapping='/symphony/proposal/*')
 global with sharing class APISymphonyProposal {
     global class ReturnState {
-        public String state;
+        public String symphonyStatus;
         public ReturnState(String theState) {
-            this.state = theState;
+            this.symphonyStatus = theState;
         }
     }
     @HttpPost
@@ -41,6 +42,19 @@ global with sharing class APISymphonyProposal {
         return new ReturnState(quote.Symphony_Status__c);
     }
 
+    @HttpPut
+    global static ReturnState updateProposal(SymphonyProposalUpdate symphonyProposalUpdate) {
+        Soldcase_Symphony__c soldcase = [SELECT Id, Sold_Case_Status__c 
+        FROM Soldcase_Symphony__c
+        WHERE Quote__c = :symphonyProposalUpdate.quoteId];
+
+        soldcase.Sold_Case_Status__c = symphonyProposalUpdate.status;
+        update soldcase;
+
+        return new ReturnState(soldcase.Sold_Case_Status__c);
+
+    }
+
     global class SymphonyProposal {
         public SelectedPlans selectedPlans {get; set;}
         public String salesForceQuoteId {get; set;}
@@ -54,4 +68,10 @@ global with sharing class APISymphonyProposal {
     public class SelectedPlansList {
         public String contractID {get; set;}
     }
+
+    global class SymphonyProposalUpdate {
+        public String quoteId {get; set;}
+        public String status {get; set;}
+    }
+
 }
