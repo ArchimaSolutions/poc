@@ -10,30 +10,35 @@ trigger symphonyTriggerOnPriorEOBUpload on ContentDocumentLink (before insert) {
     for (ContentDocumentLink cdl: cdls) {
         //Only add Ids of opportunitites 
         system.debug(cdl.LinkedEntityId);
-        if(String.valueOf(cdl.LinkedEntityId).startsWith('006')) {
+        if(String.valueOf(cdl.LinkedEntityId).startsWith('001')) {
             parentIds.add( cdl.LinkedEntityId);
             //Get document record
             ContentDocument getDocRecord = [SELECT Id, Title FROM ContentDocument Where Id = :cdl.ContentDocumentId];
-            Opportunity getOpp = [SELECT Id, Name FROM Opportunity WHERE Id = :cdl.LinkedEntityId];
+            //Opportunity getOpp = [SELECT Id, Name FROM Opportunity WHERE Id = :cdl.LinkedEntityId];
+            Account getAcc = [SELECT Id, Name FROM Account WHERE Id = :cdl.LinkedEntityId];
             if(getDocRecord.Title == 'Census') {
                 isCensus = true;
                 Census_Reimagine_POC__c newCensusRecord = new Census_Reimagine_POC__c();
-                newCensusRecord.Name = getOpp.Name;
+                newCensusRecord.Name = getAcc.Name;
                 newCensusRecord.Current_As_Of__c = Date.Today();
-                newCensusRecord.Opportunity__c = getOpp.Id;
+                newCensusRecord.Average_age_of_Employees__c = 32;
+                newCensusRecord.Employee_active__c = 145;
+
+                //newCensusRecord.Opportunity__c = getOpp.Id;
+                newCensusRecord.Account__c = getAcc.Id;
                 bulkAdd.add(newCensusRecord);
             } else {
                 Prior_EOB_Symphony__c newPriorEOB = new Prior_EOB_Symphony__c(
-                    Name = getOpp.Name, AVG_PREM_PMPM__c=1000.00, Current_Family_Deductible_In_Network__c=2500.00,
+                    Name = getAcc.Name, AVG_PREM_PMPM__c=1000.00, Current_Family_Deductible_In_Network__c=2500.00,
                     Current_Family_Deductible_OON__c=5000.00, Current_Individual_Deductible_In_Network__c=1000.00,
                     Current_Individual_Deductible_OON__c=3500.00, Current_Coinsurance_INN__c=80,
                     Current_OOP_max_Family_INN__c=10000.00, Current_OOP_max_Family_OON__c=25000.00,
                     Current_OOP_max_Individual_INN__c=2250.00, Current_OOP_max_Individual_OON__c=4000.00,
                     Current_premium_PMPM_Family_INN__c=750.99, Current_premium_PMPM_Family_OON__c=1400.00,
                     Current_premium_PMPM_Individual_IN__c=3450.00, Current_premium_PMPM_Individual_OON__c=2039.99,
-                    Opportunity__c=getOpp.Id, Current_Coinsurance_OON__c=20
+                    Account__c=getAcc.Id, Current_Coinsurance_OON__c=20
                 );
-                bulkAddPriorEOB.add(newPriorEOB);
+                bulkAddPriorEOB.add(newPriorEOB); 
             }
 
         }
@@ -137,28 +142,28 @@ trigger symphonyTriggerOnPriorEOBUpload on ContentDocumentLink (before insert) {
             insert t47;
             Census_Member_Reimagine_POC__c t48 = new Census_Member_Reimagine_POC__c(Census__c=bulkAdd[0].Id,Birthday__c=Date.parse('12/17/1952'),Contract_Type__c='1',Gender__c='F');
             insert t48;
-            Census_Member_Reimagine_POC__c t49 = new Census_Member_Reimagine_POC__c(Census__c=bulkAdd[0].Id,Birthday__c=Date.parse('10/30/1961'),Contract_Type__c='1',Gender__c='F');
-            insert t49;
-            Census_Member_Reimagine_POC__c t50 = new Census_Member_Reimagine_POC__c(Census__c=bulkAdd[0].Id,Birthday__c=Date.parse('9/25/1985'),Contract_Type__c='1',Gender__c='F');
-            insert t50;
-            Census_Member_Reimagine_POC__c t51 = new Census_Member_Reimagine_POC__c(Census__c=bulkAdd[0].Id,Birthday__c=Date.parse('6/27/1971'),Contract_Type__c='1',Gender__c='F');
-            insert t51;
-            Census_Member_Reimagine_POC__c t52 = new Census_Member_Reimagine_POC__c(Census__c=bulkAdd[0].Id,Birthday__c=Date.parse('6/8/1967'),Contract_Type__c='1',Gender__c='F');
-            insert t52;
-            Census_Member_Reimagine_POC__c t53 = new Census_Member_Reimagine_POC__c(Census__c=bulkAdd[0].Id,Birthday__c=Date.parse('2/6/1954'),Contract_Type__c='1',Gender__c='F');
-            insert t53;
-            Census_Member_Reimagine_POC__c t54 = new Census_Member_Reimagine_POC__c(Census__c=bulkAdd[0].Id,Birthday__c=Date.parse('10/14/1965'),Contract_Type__c='1',Gender__c='F');
-            insert t54;
-            Census_Member_Reimagine_POC__c t55 = new Census_Member_Reimagine_POC__c(Census__c=bulkAdd[0].Id,Birthday__c=Date.parse('2/16/1957'),Contract_Type__c='1',Gender__c='F');
-            insert t55;
-            Census_Member_Reimagine_POC__c t56 = new Census_Member_Reimagine_POC__c(Census__c=bulkAdd[0].Id,Birthday__c=Date.parse('3/22/1968'),Contract_Type__c='1',Gender__c='F');
-            insert t56;
-            Census_Member_Reimagine_POC__c t57 = new Census_Member_Reimagine_POC__c(Census__c=bulkAdd[0].Id,Birthday__c=Date.parse('3/18/1980'),Contract_Type__c='1',Gender__c='F');
-            insert t57;
-            Census_Member_Reimagine_POC__c t58 = new Census_Member_Reimagine_POC__c(Census__c=bulkAdd[0].Id,Birthday__c=Date.parse('12/6/1960'),Contract_Type__c='1',Gender__c='F');
-            insert t58;
-            Census_Member_Reimagine_POC__c t59 = new Census_Member_Reimagine_POC__c(Census__c=bulkAdd[0].Id,Birthday__c=Date.parse('1/8/1956'),Contract_Type__c='1',Gender__c='F');
-            insert t59;
+        Census_Member_Reimagine_POC__c t49 = new Census_Member_Reimagine_POC__c(Census__c=bulkAdd[0].Id,Birthday__c=Date.parse('10/30/1961'),Contract_Type__c='1',Gender__c='F');
+        insert t49;
+        Census_Member_Reimagine_POC__c t50 = new Census_Member_Reimagine_POC__c(Census__c=bulkAdd[0].Id,Birthday__c=Date.parse('9/25/1985'),Contract_Type__c='1',Gender__c='F');
+        insert t50;
+        Census_Member_Reimagine_POC__c t51 = new Census_Member_Reimagine_POC__c(Census__c=bulkAdd[0].Id,Birthday__c=Date.parse('6/27/1971'),Contract_Type__c='1',Gender__c='F');
+        insert t51;
+        Census_Member_Reimagine_POC__c t52 = new Census_Member_Reimagine_POC__c(Census__c=bulkAdd[0].Id,Birthday__c=Date.parse('6/8/1967'),Contract_Type__c='1',Gender__c='F');
+        insert t52;
+        Census_Member_Reimagine_POC__c t53 = new Census_Member_Reimagine_POC__c(Census__c=bulkAdd[0].Id,Birthday__c=Date.parse('2/6/1954'),Contract_Type__c='1',Gender__c='F');
+        insert t53;
+        Census_Member_Reimagine_POC__c t54 = new Census_Member_Reimagine_POC__c(Census__c=bulkAdd[0].Id,Birthday__c=Date.parse('10/14/1965'),Contract_Type__c='1',Gender__c='F');
+        insert t54;
+        Census_Member_Reimagine_POC__c t55 = new Census_Member_Reimagine_POC__c(Census__c=bulkAdd[0].Id,Birthday__c=Date.parse('2/16/1957'),Contract_Type__c='1',Gender__c='F');
+        insert t55;
+        Census_Member_Reimagine_POC__c t56 = new Census_Member_Reimagine_POC__c(Census__c=bulkAdd[0].Id,Birthday__c=Date.parse('3/22/1968'),Contract_Type__c='1',Gender__c='F');
+        insert t56;
+        Census_Member_Reimagine_POC__c t57 = new Census_Member_Reimagine_POC__c(Census__c=bulkAdd[0].Id,Birthday__c=Date.parse('3/18/1980'),Contract_Type__c='1',Gender__c='F');
+        insert t57;
+        Census_Member_Reimagine_POC__c t58 = new Census_Member_Reimagine_POC__c(Census__c=bulkAdd[0].Id,Birthday__c=Date.parse('12/6/1960'),Contract_Type__c='1',Gender__c='F');
+        insert t58;
+        Census_Member_Reimagine_POC__c t59 = new Census_Member_Reimagine_POC__c(Census__c=bulkAdd[0].Id,Birthday__c=Date.parse('1/8/1956'),Contract_Type__c='1',Gender__c='F');
+        insert t59;
         Census_Member_Reimagine_POC__c t60 = new Census_Member_Reimagine_POC__c(Census__c=bulkAdd[0].Id,Birthday__c=Date.parse('11/23/1965'),Contract_Type__c='1',Gender__c='M');
         insert t60;
         Census_Member_Reimagine_POC__c t61 = new Census_Member_Reimagine_POC__c(Census__c=bulkAdd[0].Id,Birthday__c=Date.parse('8/3/1991'),Contract_Type__c='1',Gender__c='F');

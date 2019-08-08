@@ -11,7 +11,7 @@ public with sharing class symphonyGetQuoteAndLineItems {
     public static String updateQuoteLineItems(Id quoteId, Id selectedLineItem) {
         String returnMessage = 'Success';
         Quote theQuote = [SELECT Id, Symphony_Status__c FROM Quote WHERE Id = :quoteId];
-        theQuote.Symphony_Status__c = 'Customer Setup';
+        theQuote.Symphony_Status__c = 'Proposal';
         List<QuoteLineItem> theLineItems = [SELECT Id, ProductStage__c, Product2.Name FROM QuoteLineItem WHERE QuoteId = :quoteId];
         for(QuoteLineItem aLineItem: theLineItems) {
             if(aLineItem.Id == selectedLineItem) {

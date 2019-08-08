@@ -1,16 +1,18 @@
 @RestResource(urlMapping='/symphony/createGroup/*')
 global with sharing class symphonyPortalDataIn {
     global class theReturn {
-        public String theValue;
-        public theReturn(String v) {
-            this.theValue = v;
+        public String accountId;
+        public String quoteId;
+        public theReturn(String aId, String qId) {
+            this.accountId = aId;
+            this.quoteId = qId;
         }
     }
     @HttpPost
     //Replace hard coded record types
     //Tries around the inserts
     global static theReturn doPost(String name, String sic, String street, String city, String postalCode, String county, String total_Employees,
-                             String firstName, String lastName, String phone, String email) { 
+                             String firstName, String lastName, String phone, String email, String effectiveDate) { 
 	    Id symphonyAccount = SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Symphony_Account').getRecordTypeId();
     	Id symphonyContact = SObjectType.Contact.getRecordTypeInfosByDeveloperName().get('Symphony_Contact').getRecordTypeId();
 		Id symphonyOpportunity = SObjectType.Opportunity.getRecordTypeInfosByDeveloperName().get('Symphony_Opportunity').getRecordTypeId();
@@ -36,10 +38,10 @@ global with sharing class symphonyPortalDataIn {
         	ContactId=theBroker.Id, RecordTypeId=symphonyQuote,Name=String.valueOf(Date.Today().year()) + ' New Business-' + name, OpportunityId=newOpportunity.Id,
             vlocity_ins__EffectiveDate__c=Date.Today()+90, Symphony_Status__c='Group Profile', sym_Family_Deductible__c=9000.00,
             sym_Family_Maximum_Out_of_Pocket__c=13000.00, sym_Individual_Deductible__c=2500.00, sym_Individual_Maximum_Out_of_Pocket__c=3800.00,
-            Pricebook2Id='01s41000007wBCZAA2'
+            Pricebook2Id='01s41000007wBCZAA2', Sym_Effective_Date__c=Date.Parse(effectiveDate)
         );
 		insert newQuote;  
-        theReturn ret = new theReturn(String.valueOf(newAccount.Id));
+        theReturn ret = new theReturn(String.valueOf(newAccount.Id), String.valueOf(newQuote.Id));
         return ret;
     }
     @HttpGet

@@ -1,12 +1,203 @@
 <template>
-    <div>Include these types of medical plans</div>
-    
-    Test = {fineTuneRecommendations.E2E_Sym_Family_In_Network_Deductible_Max__c}
-    
-    <p>
-        <label for="amount">Price range:</label>
-        <input type="text" class="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
-    </p>
-              
-    <div class="slider-range"></div>        
+    <div class="setWidth">
+        <div>Include these types of medical plans</div>
+
+        <div class="slds-form-element">
+            <div class="slds-grid slds-wrap">
+                <div class="slds-checkbox_toggle slds-col slds-size_1-of-2 slds-grid">
+                    <span class="slds-form-element__label slds-m-bottom_none">PPO</span>
+                    <template if:true = {PPOCheck}>
+                        <lightning-input type="checkbox" checked="" onclick={togglePPO}></lightning-input>
+                    </template>
+                    <template if:false = {PPOCheck}>
+                        <lightning-input type="checkbox" onclick={togglePPO}></lightning-input>
+                    </template>
+                </div>
+                <div class="slds-checkbox_toggle slds-col slds-size_1-of-2 slds-grid">
+                    <span class="slds-form-element__label slds-m-bottom_none">HMO</span>
+                    <template if:true = {HMOCheck}>
+                        <lightning-input type="checkbox" checked="" onclick={toggleHMO}></lightning-input>
+                    </template>
+                    <template if:false = {HMOCheck}>
+                        <lightning-input type="checkbox" onclick={toggleHMO}></lightning-input>
+                    </template>
+                </div>
+                <div class="slds-checkbox_toggle slds-col slds-size_1-of-2 slds-grid">
+                    <span class="slds-form-element__label slds-m-bottom_none">POS</span>
+                    <template if:true = {POSCheck}>
+                        <lightning-input type="checkbox" checked="" onclick={togglePOS}></lightning-input>
+                    </template>
+                    <template if:false = {POSCheck}>
+                        <lightning-input type="checkbox" onclick={togglePOS}></lightning-input>
+                    </template>
+                </div>
+                <div class="slds-checkbox_toggle slds-col slds-size_1-of-2 slds-grid">
+                    <span class="slds-form-element__label slds-m-bottom_none">HSA</span>
+                    <template if:true = {HSACheck}>
+                        <lightning-input type="checkbox" checked="" onclick={toggleHSA}></lightning-input>
+                    </template>
+                    <template if:false = {HSACheck}>
+                        <lightning-input type="checkbox" onclick={toggleHSA}></lightning-input>
+                    </template>
+                </div>
+            </div>
+        </div>
+        
+        <label class="indDedInNetwork"></label>
+        <span class="amountIndDedInNetwork formatAmounts"></span>
+                
+        <div class="slider-rangeIndDedInNetwork"></div>
+        <div class="fr slider-highIndDedInNetwork"></div>        
+        <div class="fl slider-lowIndDedInNetwork"></div>        
+        <div class="cf"></div>
+
+        <label class="indDedOutNetwork"></label>
+        <span class="amountIndDedOutNetwork formatAmounts"></span>
+                
+        <div class="slider-rangeIndDedOutNetwork"></div>
+        <div class="fr slider-highIndDedOutNetwork"></div>        
+        <div class="fl slider-lowIndDedOutNetwork"></div>        
+        <div class="cf"></div>
+
+        <label class="famDedInNetwork"></label>
+        <span class="amountFamDedInNetwork formatAmounts"></span>
+                 
+        <div class="slider-rangeFamDedInNetwork"></div>
+        <div class="fr slider-highFamDedInNetwork"></div>        
+        <div class="fl slider-lowFamDedInNetwork"></div>        
+        <div class="cf"></div>
+
+        <label class="famDedOutNetwork"></label>
+        <span class="amountFamDedOutNetwork formatAmounts"></span>
+        
+        <div class="slider-rangeFamDedOutNetwork"></div>
+        <div class="fr slider-highFamDedOutNetwork"></div>        
+        <div class="fl slider-lowFamDedOutNetwork"></div>        
+        <div class="cf"></div>
+
+        <label class="indMOOPInNetwork"></label>
+        <span class="amountIndMOOPInNetwork formatAmounts"></span>
+        
+        <div class="slider-rangeIndMOOPInNetwork"></div>
+        <div class="fr slider-highIndMOOPInNetwork"></div>        
+        <div class="fl slider-lowIndMOOPInNetwork"></div>        
+        <div class="cf"></div>
+
+        <label class="indMOOPOutNetwork"></label>
+        <span class="amountIndMOOPOutNetwork formatAmounts"></span>
+        
+        <div class="slider-rangeIndMOOPOutNetwork"></div>
+        <div class="fr slider-highIndMOOPOutNetwork"></div>        
+        <div class="fl slider-lowIndMOOPOutNetwork"></div>        
+        <div class="cf"></div>
+
+        <label class="famMOOPInNetwork"></label>
+        <span class="amountFamMOOPInNetwork formatAmounts"></span>
+        
+        <div class="slider-rangeFamMOOPInNetwork"></div>
+        <div class="fr slider-highFamMOOPInNetwork"></div>        
+        <div class="fl slider-lowFamMOOPInNetwork"></div>        
+        <div class="cf"></div>
+
+        <label class="famMOOPOutNetwork"></label>
+        <span class="amountFamMOOPOutNetwork formatAmounts"></span>
+        
+        <div class="slider-rangeFamMOOPOutNetwork"></div>
+        <div class="fr slider-highFamMOOPOutNetwork"></div>        
+        <div class="fl slider-lowFamMOOPOutNetwork"></div>        
+        <div class="cf"></div>
+
+        <label class="inNetworkCoinsurance"></label>
+        <span class="amountInNetworkCoinsurance formatAmounts"></span>
+        
+        <div class="slider-rangeInNetworkCoinsurance"></div>
+        <div class="fr slider-highInNetworkCoinsurance"></div>        
+        <div class="fl slider-lowInNetworkCoinsurance"></div>        
+        <div class="cf"></div>
+
+        <label class="outNetworkCoinsurance"></label>
+        <span class="amountOutNetworkCoinsurance formatAmounts"></span>
+        
+        <div class="slider-rangeOutNetworkCoinsurance"></div>
+        <div class="fr slider-highOutNetworkCoinsurance"></div>        
+        <div class="fl slider-lowOutNetworkCoinsurance"></div>        
+        <div class="cf"></div>
+
+        <label class="pharmTier1Coinsurance"></label>
+        <span class="amountPharmTier1Coinsurance formatAmounts"></span>
+        
+        <div class="slider-rangePharmTier1Coinsurance"></div>
+        <div class="fr slider-highPharmTier1Coinsurance"></div>        
+        <div class="fl slider-lowPharmTier1Coinsurance"></div>        
+        <div class="cf"></div>
+
+        <label class="pharmTier2Coinsurance"></label>
+        <span class="amountPharmTier2Coinsurance formatAmounts"></span>
+        
+        <div class="slider-rangePharmTier2Coinsurance"></div>
+        <div class="fr slider-highPharmTier2Coinsurance"></div>        
+        <div class="fl slider-lowPharmTier2Coinsurance"></div>        
+        <div class="cf"></div>
+
+        <label class="pharmTier3Coinsurance"></label>
+        <span class="amountPharmTier3Coinsurance formatAmounts"></span>
+        
+        <div class="slider-rangePharmTier3Coinsurance"></div>
+        <div class="fr slider-highPharmTier3Coinsurance"></div>        
+        <div class="fl slider-lowPharmTier3Coinsurance"></div>        
+        <div class="cf"></div>
+
+        <label class="pharmTier4Coinsurance"></label>
+        <span class="amountPharmTier4Coinsurance formatAmounts"></span>
+        
+        <div class="slider-rangePharmTier4Coinsurance"></div>
+        <div class="fr slider-highPharmTier4Coinsurance"></div>        
+        <div class="fl slider-lowPharmTier4Coinsurance"></div>        
+        <div class="cf"></div>
+
+        <label class="pharmTier1Copay"></label>
+        <span class="amountPharmTier1Copay formatAmounts"></span>
+        
+        <div class="slider-rangePharmTier1Copay"></div>
+        <div class="fr slider-highPharmTier1Copay"></div>        
+        <div class="fl slider-lowPharmTier1Copay"></div>        
+        <div class="cf"></div>
+
+        <label class="pharmTier2Copay"></label>
+        <span class="amountPharmTier2Copay formatAmounts"></span>
+        
+        <div class="slider-rangePharmTier2Copay"></div>
+        <div class="fr slider-highPharmTier2Copay"></div>        
+        <div class="fl slider-lowPharmTier2Copay"></div>        
+        <div class="cf"></div>
+
+        <label class="pharmTier3Copay"></label>
+        <span class="amountPharmTier3Copay formatAmounts"></span>
+        
+        <div class="slider-rangePharmTier3Copay"></div>
+        <div class="fr slider-highPharmTier3Copay"></div>        
+        <div class="fl slider-lowPharmTier3Copay"></div>        
+        <div class="cf"></div>
+
+        <label class="pharmTier4Copay"></label>
+        <span class="amountPharmTier4Copay formatAmounts"></span>
+        
+        <div class="slider-rangePharmTier4Copay"></div>
+        <div class="fr slider-highPharmTier4Copay"></div>        
+        <div class="fl slider-lowPharmTier4Copay"></div>        
+        <div class="cf"></div>
+
+        <div class="slds-checkbox_toggle slds-col slds-size_1-of-2 slds-grid">
+            <span class="slds-form-element__label slds-m-bottom_none">Allow your client to see the above</span>
+            <template if:true = {ClientSeeCheck}>
+                <lightning-input type="checkbox" checked=""></lightning-input>
+            </template>
+            <template if:false = {ClientSeeCheck}>
+                <lightning-input type="checkbox"></lightning-input>
+            </template>
+        </div>
+
+        <lightning-button type="submit" variant="brand" label="Save" onclick={saveRecord}></lightning-button>
+
+    </div>
 </template>

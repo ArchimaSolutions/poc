@@ -1,0 +1,35 @@
+.fr {
+    float: right;
+}
+
+.fl {
+    float: left;
+}
+
+.cf {
+    clear: both;
+    margin-bottom: 25px;
+}
+
+.formatAmounts {
+    border: 0px;
+    color: #0077C6;
+    font-weight: bold;
+}
+
+label {
+    font-weight: bold;
+}
+
+.setWidth {
+    width: 60%;
+}
+
+.inline {
+    display: inline;
+}
+
+.colorSlider .ui-slider-range {
+    background: #0077C6 !important;
+    background-image: none;
+}
