@@ -2,7 +2,7 @@
  * Symphony Proposal API
  * 
  * POST /proposal/
- * PUT /proposal/quoteId
+ * PUT /proposal/
  *
  */
 @RestResource(urlMapping='/symphony/proposal/*')
