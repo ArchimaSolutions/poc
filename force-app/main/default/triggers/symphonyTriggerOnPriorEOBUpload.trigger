@@ -1,4 +1,8 @@
 trigger symphonyTriggerOnPriorEOBUpload on ContentDocumentLink (before insert) {
+    
+
+    //AnthemAPI.RecommendationResponse recommendationResponse = AnthemAPI.getRecommendations(recommendationRequest);
+
     //This needs to be 100% rewritten to only run on Symphony opportunities and add error checking and better bulk
     //This should NOT BE IN THE TRIGGER quick Demo code
     system.debug('I am here');
@@ -6,7 +10,7 @@ trigger symphonyTriggerOnPriorEOBUpload on ContentDocumentLink (before insert) {
     List<ContentDocumentLink> cdls = ( Trigger.new == null ? Trigger.old : Trigger.new );
     Set<Id> parentIds = new Set<Id>();
     List<Census_Reimagine_POC__c> bulkAdd = new List<Census_Reimagine_POC__c>();
-    List<Prior_EOB_Symphony__c> bulkAddPriorEOB = new List<Prior_EOB_Symphony__c>();
+    List<Prior_EOB_Symphony__c> bulkAddPriorEOB = new List<Prior_EOB_Symphony__c>(); 
     for (ContentDocumentLink cdl: cdls) {
         //Only add Ids of opportunitites 
         system.debug(cdl.LinkedEntityId);
@@ -16,7 +20,10 @@ trigger symphonyTriggerOnPriorEOBUpload on ContentDocumentLink (before insert) {
             ContentDocument getDocRecord = [SELECT Id, Title FROM ContentDocument Where Id = :cdl.ContentDocumentId];
             //Opportunity getOpp = [SELECT Id, Name FROM Opportunity WHERE Id = :cdl.LinkedEntityId];
             Account getAcc = [SELECT Id, Name FROM Account WHERE Id = :cdl.LinkedEntityId];
-            if(getDocRecord.Title == 'Census') {
+            Quote quote = [SELECT Id FROM Quote WHERE AccountId = :cdl.LinkedEntityId LIMIT 1];
+            system.debug('Quote ID=' + quote.Id);
+            symphonyCoLo4FutureCallout.findPlans(quote.Id);
+            /*if(getDocRecord.Title == 'Census') {
                 isCensus = true;
                 Census_Reimagine_POC__c newCensusRecord = new Census_Reimagine_POC__c();
                 newCensusRecord.Name = getAcc.Name;
@@ -39,11 +46,11 @@ trigger symphonyTriggerOnPriorEOBUpload on ContentDocumentLink (before insert) {
                     Account__c=getAcc.Id, Current_Coinsurance_OON__c=20
                 );
                 bulkAddPriorEOB.add(newPriorEOB); 
-            }
+            } */
 
-        }
+        } 
     }
-    insert bulkAdd;
+    /*insert bulkAdd;
     insert bulkAddPriorEOB;
     if(isCensus) {
         Census_Member_Reimagine_POC__c t1 = new Census_Member_Reimagine_POC__c(Census__c=bulkAdd[0].Id,Birthday__c=Date.parse('3/21/1983'),Contract_Type__c='3',Gender__c='F');
@@ -220,5 +227,5 @@ trigger symphonyTriggerOnPriorEOBUpload on ContentDocumentLink (before insert) {
         insert t86;
         Census_Member_Reimagine_POC__c t87 = new Census_Member_Reimagine_POC__c(Census__c=bulkAdd[0].Id,Birthday__c=Date.parse('2/5/1957'),Contract_Type__c='1',Gender__c='F');
         insert t87; 
-    }  
+    } */ 
 }
