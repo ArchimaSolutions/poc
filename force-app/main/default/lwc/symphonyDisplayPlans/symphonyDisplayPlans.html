@@ -7,7 +7,7 @@
             <div class="slds-col slds-size_1-of-3 slds-m-bottom_large" key={lineItem.Id} data-item={lineItem.Id} onclick={selectPlan}>
                 <div class="plan">{lineItem.Product2.Name}</div>
                 <div class="rating">Average Monthly Premium</div>
-                <div class="total">${lineItem.Product2.symphony_Temp_Rate__c}.00</div>
+                <div class="total">${lineItem.UnitPrice}</div>
                 <div class="right">{lineItem.Product2.E2E_Symphony_Deductible__c}</div>
                 <div class="left">Deductible</div><br/>
                 <div class="right">{lineItem.Product2.E2E_Symphony_Primary_Care_Copay__c}</div>

@@ -1,7 +1,7 @@
 public with sharing class symphonyGetQuoteAndLineItems {
     @AuraEnabled(cacheable=true)
     public static Quote getLineItems(Id recordId) {
-        Quote theQuote = [SELECT Id, (SELECT Id, Product2.Name, Product2.E2E_Symphony_Coinsurance__c,Product2.E2E_Symphony_Deductible__c,Product2.E2E_Symphony_Primary_Care_Copay__c,
+        Quote theQuote = [SELECT Id, (SELECT Id, UnitPrice, Product2.Name, Product2.E2E_Symphony_Coinsurance__c,Product2.E2E_Symphony_Deductible__c,Product2.E2E_Symphony_Primary_Care_Copay__c,
                                              Product2.E2E_Symphony_Specialist_Copay__c,Product2.E2E_Symphony_Maximum_Out_of_Pocket__c, Product2.E2E_Symphony_Rx_network__c, Product2.E2E_Sympony_Rx_Plan__c,
                                              Product2.E2E_Symphony_Coinsurance_Pharmacy__c, Product2.E2E_Symphony_Preventative_Drugs_Covered__c, Product2.symphony_Temp_Rate__c FROM QuoteLineItems) FROM Quote WHERE Id = :recordId];
         return theQuote;

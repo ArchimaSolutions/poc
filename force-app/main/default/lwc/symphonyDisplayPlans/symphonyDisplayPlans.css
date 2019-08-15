@@ -2,6 +2,7 @@
     background-color: #D1D1D1;
     padding: 15px;
     color: blue;
+    min-height: 75px;
 }
 
 .rating {

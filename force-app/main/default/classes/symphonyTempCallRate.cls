@@ -24,18 +24,35 @@ public with sharing class symphonyTempCallRate {
         ratingRequest.ratingRequestPlans = new List<AnthemAPI.RatingPlan>();
         //ratingRequest.ratingRequestPlans.add(new AnthemAPI.RatingPlan());
 
-        List <QuoteLineItem> allqli = [SELECT Id, Product2.Id, Product2.ProductCode, Product2.Contract_Code__c, Product2.LG_Network__c FROM QuoteLineItem Where QuoteID = :quoteId[0]];
-
+        List <QuoteLineItem> allqli = [SELECT Id, Product2.sym_Symphony_Product_Id__c, Product2.Id, Product2.ProductCode, Product2.Contract_Code__c, Product2.LG_Network__c FROM QuoteLineItem Where QuoteID = :quoteId[0]];
+        Integer x = 0;
         for(QuoteLineItem qli : allqli) {
             AnthemApi.RatingPlan rrp = new AnthemApi.RatingPlan();
             //rrp.quoteLineItemID = qli.Id;
-            rrp.quoteLineItemID = 'xxxx1223';
+            //rrp.quoteLineItemID = 'xxxx1223';
+            rrp.quoteLineItemID = qli.Id;
             rrp.fundingType = 'FI';
-            //rrp.productID = Integer.valueOf(qli.Product2.ProductCode);
-            rrp.productID = 42358;
-            //rrp.contractCOde = qli.Product2.Contract_Code__c;
-            rrp.contractCode = '50HZ';
-            //rrp.networkName = qli.Product2.LG_Network__c;
+            if(qli.Product2.Contract_Code__c == '51RXQQQ') {
+                rrp.productID = Integer.valueOf('42459');
+                system.debug('Prod Id=' + rrp.productID);
+                rrp.contractCode = '50BN';
+                system.debug(rrp.contractCode);                
+            } else if(qli.Product2.Contract_Code__c == '51QR') {
+                rrp.productID = Integer.valueOf('42447');
+                system.debug('Prod Id=' + rrp.productID);
+                rrp.contractCode = '50L1';
+                system.debug(rrp.contractCode);
+            } else if(qli.Product2.Contract_Code__c == '51PF') {
+                rrp.productID = Integer.valueOf('42454');
+                system.debug('Prod Id=' + rrp.productID);
+                rrp.contractCode = '50MA';
+                system.debug(rrp.contractCode);
+            } else {
+                rrp.productID = Integer.valueOf(qli.Product2.sym_Symphony_Product_Id__c);
+                system.debug('Prod Id=' + rrp.productID);
+                rrp.contractCode = qli.Product2.Contract_Code__c;
+                system.debug(rrp.contractCode);                
+            }
             rrp.networkName = 'Blue Access';
             rrp.networkType = 'PPO';
             rrp.cdhpIndicator = 'HSA';
@@ -60,8 +77,8 @@ public with sharing class symphonyTempCallRate {
         
         
         allqli[0].UnitPrice = ratingResponse.rateInfo[0].single;
-        allqli[1].UnitPrice = ratingResponse.rateInfo[1].single;
-        allqli[2].UnitPrice = ratingResponse.rateInfo[2].single;
+        //allqli[1].UnitPrice = ratingResponse.rateInfo[1].single;
+        //allqli[2].UnitPrice = ratingResponse.rateInfo[2].single;
 
         update allqli;
         

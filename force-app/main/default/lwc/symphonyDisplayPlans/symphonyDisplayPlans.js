@@ -11,6 +11,12 @@ export default class SymphonyDisplayPlans extends LightningElement {
     theError;
     @track allowClick = true;
 
+    formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 2
+    })
+
     @wire(getQuotes,{ recordId: '$recId'})
     wireQuotes({
         error,
