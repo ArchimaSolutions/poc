@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Symphony_Letterhead</letterhead>
+    <name>Symphony Employer Just Signed</name>
+    <style>freeForm</style>
+    <subject>Employer has signed the proposal.</subject>
+    <textOnly>Dear ,
+
+{!Soldcase_Symphony__c.Signed_Employer_First_Name__c} {!Soldcase_Symphony__c.Signed_Employer_Last_Name__c} has the proposal and now requires your attention.
+
+Please click here to view the proposal.
+
+The Symphony Team.</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

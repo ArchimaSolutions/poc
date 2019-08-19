@@ -9,9 +9,6 @@
             "c/symphonyDashboard": [
                 "symphonyDashboard/symphonyDashboard.js"
             ],
-            "c/symphonyDisplayPlans": [
-                "symphonyDisplayPlans/symphonyDisplayPlans.js"
-            ],
             "c/symphonyFineTuneRecommendation": [
                 "symphonyFineTuneRecommendation/symphonyFineTuneRecommendation.js"
             ],
@@ -20,6 +17,21 @@
             ],
             "c/symphonyShowRecomendationPayload": [
                 "symphonyShowRecomendationPayload/symphonyShowRecomendationPayload.js"
+            ],
+            "c/helloWorld": [
+                "helloWorld/helloWorld.js"
+            ],
+            "c/screen1": [
+                "screen1/screen1.js"
+            ],
+            "c/screen3": [
+                "screen3/screen3.js"
+            ],
+            "c/quoteDetails": [
+                "quoteDetails/quoteDetails.js"
+            ],
+            "c/symphonyDisplayPlans": [
+                "symphonyDisplayPlans/symphonyDisplayPlans.js"
             ]
         }
     },

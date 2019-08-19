@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>E2E_SYMPHONY_MAXIMUM_OUT_OF_POCKET_FAMIL__c</fullName>
+    <externalId>false</externalId>
+    <label>Maximum Out of Pocket - Family</label>
+    <precision>7</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Currency</type>
+</CustomField>

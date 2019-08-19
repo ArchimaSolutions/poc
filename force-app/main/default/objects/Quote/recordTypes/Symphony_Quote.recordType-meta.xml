@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Symphony_Quote</fullName>
+    <active>true</active>
+    <compactLayoutAssignment>Symphony_Compact_Quote</compactLayoutAssignment>
+    <description>Used for the Symphony POC</description>
+    <label>Symphony Quote</label>
+    <picklistValues>
+        <picklist>Status</picklist>
+        <values>
+            <fullName>Accepted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Denied</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Draft</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Review</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Needs Review</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Started</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Presented</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rejected</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Symphony_Status__c</picklist>
+        <values>
+            <fullName>Access to Care</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Closed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer Setup</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Get Rate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Get Recommendation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Group Profile</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Plan Selection</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Proposal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sold</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>chamberOfCommerce__c</picklist>
+        <values>
+            <fullName>NO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>YES</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>commissionType__c</picklist>
+        <values>
+            <fullName>PCPM</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>PMPM</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

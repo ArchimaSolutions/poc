@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Admin_Preferences__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Billing &amp; Admin Preferences</label>
+    <referenceTo>E2E_Symphony_Billing_Admin_Preferences__c</referenceTo>
+    <relationshipLabel>Billing Structures</relationshipLabel>
+    <relationshipName>Billing_Structures</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

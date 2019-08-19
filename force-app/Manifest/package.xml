@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <version>46.0</version>
+    <types>
+        <members>symphonyDisplayPlans</members>
+        <members>symphonyFineTuneRecommendation</members>
+        <name>LightningComponentBundle</name>
+    </types> 
+    <types>
+        <members>E2E_Symphony_Fine_Tune_Recommendation__c</members>
+        <members>E2E_Symphony_Billing_Admin_Preferences__c</members>
+        <members>Census_Reimagine_POC__c</members>
+        <members>Prior_EOB_Symphony__c</members>
+        <members>Anthem_API_Settings__c</members>
+        <members>Symphony_Message_Bus__e</members>
+        <members>Symphony_Rating_Return__e</members>
+        <members>Census_Member_Reimagine_POC__c</members>
+        <members>Soldcase_Symphony__c</members>
+        <members>Billing_Structure__c</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>API User</members>
+        <members>Symphony User</members>
+        <name>Profile</name>
+    </types>
+    <types>
+        <members>Symphony_Experience</members>
+        <name>CustomApplication</name>
+    </types>
+    <types>
+        <members>E2E_Symphony_Billing_Admin_Preferences__c</members>
+        <members>Billing_Structure__c</members>
+        <members>E2E_Symphony_Fine_Tune_Recommendation__c</members>
+        <members>Soldcase_Symphony__c</members>
+        <name>CustomTab</name>
+    </types>
+    <types>
+        <members>Symphony_Home</members>
+        <members>Symphony_Account_Record_Page</members>
+        <members>Symphony_Census_Record_Page</members>
+        <members>Symphony_Broker_Page</members>
+        <members>Symphony_Create_Quote</members>
+        <members>Symphony_Experience</members>
+        <members>Symphony_Opportunity_Record_Page</members>
+        <members>Symphony_Quote_Record_Page</members>
+        <name>FlexiPage</name>
+    </types>
+    <types>
+        <members>SymphonySFCallRecommendation</members>
+        <members>symphonyGetQuoteAndLineItems</members>
+        <members>SymphonyTriggerHandler</members>
+        <members>APISymphonyBrokerSign</members>
+        <members>APISymphonyEmployerSign</members>
+        <members>APISymphonyGetSalesContact</members>
+        <members>APISymphonyProposal</members>
+        <members>APISymphonySoldCase</members>
+        <members>AnthemAPI</members>
+        <members>APISymphonyGroup</members>
+        <members>APISymphonyQuote</members>
+        <members>APISymphonyGroupBillPref</members>
+        <members>APISymphonyPlan</members>
+        <members>APISymphonyRecPlans</members>
+        <members>APISymphonyProposal</members>
+        <members>APISymphonyGroupPref</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>Opportunity.Symphony_Case_Sold</members>
+        <members>Quote.Symphony_Email_Employer</members>
+        <members>Soldcase_Symphony__c.Symphony_Employer_Signed</members>
+        <members>Quote.Symphony_Rate_Returned</members>
+        <members>Quote.symphony_EmailBroker</members>
+        <members>Quote.symphony_Census_Error</members>
+        <name>WorkflowAlert</name>
+    </types>
+    <types>
+        <members>unfiled$public/Symphony_Case_Sold</members>
+        <members>unfiled$public/symphony_Census_Error</members>
+        <members>unfiled$public/symphony_EmailBroker</members>
+        <members>unfiled$public/Symphony_Email_Employer</members>
+        <members>unfiled$public/Symphony_Employer_Just_Signed</members>
+        <members>unfiled$public/Symphony_Test</members>
+        <members>unfiled$public/Symphony_Rate_is_Back</members>
+        <name>EmailTemplate</name>
+    </types>
+    <types>
+        <members>Symphony_Letterhead</members>
+        <name>Letterhead</name>
+    </types>
+    <types>
+        <members>sym_Screen_Create_Recommendation_Request</members>
+        <members>symphony_Create_Symphony_Group_Structure</members>
+        <members>Test_Flow</members>
+        <members>Symphony_Update_Main_Contact_on_Quote</members>
+        <members>Symphony_Update_Sold_Case_to_Sent_to_Employer</members>
+        <members>Symphony_Create_Quote_Task_On_Exception</members>
+        <members>Symphony_Opportunity</members>
+        <members>Symphony_Soldcase</members>
+        <members>symphony_Update_Broker</members>
+        <members>Symphony_Update_Contact_on_Opportunity</members>
+        <name>Flow</name>
+    </types>
+    <types>
+        <members>Account-Symphony Account</members>
+        <members>Contact-Symphony Contact</members>
+        <members>Contact-Symphony Broker</members>
+        <members>Opportunity-Opportunity Layout - Symphony - New Business</members>
+        <members>Quote-Symphony Quote</members>
+        <members>Soldcase_Symphony__c-Soldcase Layout</members>
+        <members>Census_Reimagine_POC__c-Census Layout</members>
+        <members>Prior_EOB_Symphony__c-Prior EOB Layout</members>
+        <members>E2E_Symphony_Billing_Admin_Preferences__c-Billing and Payment Preferences Layout</members>
+        <members>Billing_Structure__c-Billing Structure Layout</members>
+        <members>Census_Member_Reimagine_POC__c-Census Member Layout</members>
+        <name>Layout</name>
+    </types>
+    <types>
+        <members>Contact.symphony_Broker</members>
+        <members>Contact.Symphony_Contact</members>
+        <members>Account.Symphony_Account</members>
+        <members>Opportunity.Symphony_Opportunity</members>
+        <members>Quote.Symphony_Quote</members>
+        <members>Task.Quote_Task_Symphony</members>
+        <name>RecordType</name>
+    </types>
+    <types>
+        <members>Quote.Call_actual_engine</members>
+        <members>Quote.Get_Recommendation_Price</members>
+        <name>QuickAction</name>
+    </types>
+    <types>
+        <members>Opportunity.Symphony Sales</members>
+        <name>BusinessProcess</name>
+    </types>  
+    <types>
+        <members>Account.Symphony_Accounts</members>
+        <members>Contact.Symphony Brokers</members>
+        <members>Contact.Symphony Contacts</members>
+        <members>Opportunity.Symphony_Opportunities</members>
+        <members>Quote.Symphony Quotes</members>
+        <members>Task.Symphony Tasks</members>
+        <name>ListView</name>
+    </types>  
+    <types>
+        <members>Symphony_Quote_Exception</members>
+        <members>Symphony_Quote_Path</members>
+        <name>PathAssistant</name>
+    </types>  
+    <types>
+        <members>Account.County__c</members>
+        <members>Account.symphony_Stndrd_Industrial_Classificatin__c</members>
+        <members>Account.Number_of_Employees__c</members>
+        <members>Contact.E2E_Symphony_Notify_action_updates_email__c</members>
+        <members>Contact.E2E_Symphony_Notify_action_updates_text__c</members>
+        <members>Contact.E2E_Symphony_Notfy_actionable_update_web__c</members>
+        <members>Contact.E2E_Symphony_Notify_all_updates_by_email__c</members>
+        <members>Contact.E2E_Symphony_Notify_all_by_text__c</members>
+        <members>Contact.E2E_Symphony_Notify_all_updates_website__c</members>
+        <members>QuoteLineItem.E2E_Symph_Recommendation__c</members>
+        <members>QuoteLineItem.E2E_Symphony_Recommendation_Type__c</members>
+        <members>QuoteLineItem.E2E_Symphony_Recommendation_Order__c</members>
+        <members>QuoteLineItem.sym_IsSold__c</members>
+        <members>QuoteLineItem.rate_eeChildren__c</members>
+        <members>QuoteLineItem.rate_family__c</members>
+        <members>QuoteLineItem.rate_eeChild__c</members>
+        <members>QuoteLineItem.rate_twoParty__c</members>
+        <members>QuoteLineItem.rate_single_number__c</members>
+        <members>QuoteLineItem.E2E_Symphony_Recommendation_Order__c</members>
+
+        <members>Quote.Symphony_Status__c</members>
+        <members>Quote.sym_Actual_Broker_Email</members>
+        <members>Quote.sym_Actual_Broker_Name</members>
+
+        <members>Quote.Sym_Completed_Date__c</members>
+        <members>Quote.chamberOfCommerce__c</members>
+        <members>Quote.commissionType__c</members>
+        <members>Quote.premiumDelay__c</members>
+        <members>Quote.commissionValue__c</members>
+        <members>Quote.Sym_Effective_Date</members>
+
+        <members>Product2.sym_Average_Monthly_Premium</members>
+        <members>Product2.E2E_Symphony_Coinsurance_Pharmacy__c</members>
+        <members>Product2.E2E_Symphony_Coinsurance__c</members>
+        <members>Product2.E2E_Symphony_Deductible__c</members>
+        <members>Product2.E2E_Symphony_Maximum_Out_of_Pocket__c</members>
+        <members>Product2.E2E_Symphony_Pharmacy_Included__c</members>
+        <members>Product2.E2E_Symphony_Plan_ID__c</members>
+        <members>Product2.E2E_Symphony_Preventative_Drugs_Covered__c</members>
+        <members>Product2.E2E_Symphony_Primary_Care_Copay__c</members>
+        <members>Product2.E2E_Symphony_Rx_network__c</members>
+        <members>Product2.E2E_Symphony_Specialist_Copay__c</members>
+        <members>Product2.E2E_Sympony_Rx_Plan__c</members>
+        <members>Product2.E2E_SYMPHONY_DEDUCTIBLE_FAMILY__c</members>
+        <members>Product2.E2E_SYMPHONY_EMERGENCY_ROOM_CO_PAY__c</members>
+        <members>Product2.E2E_SYMPHONY_IN_PATIENT_HOSP_COIN__c</members>
+        <members>Product2.E2E_SYMPHONY_MAXIMUM_OUT_OF_POCKET_FAMIL__c</members>
+        <members>Product2.E2E_SYMPHONY_OFF_VISIT_EPHC_COPAY__c</members>
+        <members>Product2.E2E_SYMPHONY_OFF_VISIT_PCP_COPAY__c</members>
+        <members>Product2.E2E_SYMPHONY_OFF_VISIT_SCP_COPAY__c</members>
+        <members>Product2.E2E_SYMPHONY_URGENT_CARE_CO_PAY__c</members>
+        <members>Product2.ScoobyDoo__c</members>
+        <members>Product2.E2E_SYMPHONY_AVERAGE_MONTHLY_PREMIUM__C</members>
+        <members>Product2.SYMPHONY_TEMP_RATE__C</members>
+        <members>Product2.sym_Symphony_Product_Id__c</members>
+        <name>CustomField</name>
+    </types>
+
+</Package>

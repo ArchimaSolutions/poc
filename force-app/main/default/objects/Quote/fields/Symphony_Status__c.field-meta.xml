@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Symphony_Status__c</fullName>
+    <description>Used in the symphony POC and stores the pizza tracker status.</description>
+    <externalId>false</externalId>
+    <label>Symphony Status</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Group Profile</fullName>
+                <default>false</default>
+                <label>Group Profile</label>
+            </value>
+            <value>
+                <fullName>Get Recommendation</fullName>
+                <default>false</default>
+                <label>Get Recommendation</label>
+            </value>
+            <value>
+                <fullName>Get Rate</fullName>
+                <default>false</default>
+                <label>Get Rate</label>
+            </value>
+            <value>
+                <fullName>Plan Selection</fullName>
+                <default>false</default>
+                <label>Plan Selection</label>
+            </value>
+            <value>
+                <fullName>Proposal</fullName>
+                <default>false</default>
+                <label>Proposal</label>
+            </value>
+            <value>
+                <fullName>Sold</fullName>
+                <default>false</default>
+                <label>Sold</label>
+            </value>
+            <value>
+                <fullName>Customer Setup</fullName>
+                <default>false</default>
+                <label>Customer Setup</label>
+            </value>
+            <value>
+                <fullName>Access to Care</fullName>
+                <default>false</default>
+                <label>Access to Care</label>
+            </value>
+            <value>
+                <fullName>Closed</fullName>
+                <default>false</default>
+                <label>Closed</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

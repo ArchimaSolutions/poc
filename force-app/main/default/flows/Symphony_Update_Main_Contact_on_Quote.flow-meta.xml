@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <formulas>
+        <name>mergeName</name>
+        <dataType>String</dataType>
+        <expression>{!contactRecord.FirstName} + &#39; &#39; + {!contactRecord.LastName}</expression>
+    </formulas>
+    <interviewLabel>Symphony Update Main Contact on Quote {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Symphony Update Main Contact on Quote</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Gets the contact record that matches the ID passed in.</description>
+        <name>Get_Contact_Record</name>
+        <label>Get Contact Record</label>
+        <locationX>187</locationX>
+        <locationY>49</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Update_the_Quote</targetReference>
+        </connector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <object>Contact</object>
+        <outputReference>contactRecord</outputReference>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>FirstName</queriedFields>
+        <queriedFields>LastName</queriedFields>
+    </recordLookups>
+    <recordUpdates>
+        <description>This will update the main contact name on the quote.</description>
+        <name>Update_the_Quote</name>
+        <label>Update the Quote</label>
+        <locationX>358</locationX>
+        <locationY>49</locationY>
+        <filters>
+            <field>Sym_Employer_Main_Contact_Name__c</field>
+            <operator>Contains</operator>
+            <value>
+                <elementReference>firstName</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Sym_Employer_Main_Contact_Name__c</field>
+            <operator>Contains</operator>
+            <value>
+                <elementReference>lastName</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Sym_Employer_Main_Contact_Name__c</field>
+            <value>
+                <elementReference>mergeName</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Quote</object>
+    </recordUpdates>
+    <startElementReference>Get_Contact_Record</startElementReference>
+    <status>Active</status>
+    <variables>
+        <description>This will hold the contact record.</description>
+        <name>contactRecord</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Contact</objectType>
+    </variables>
+    <variables>
+        <description>The contact&#39;s previous first name.</description>
+        <name>firstName</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>The contact&#39;s previous last name.</description>
+        <name>lastName</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>The contact Id coming in from process builder.</description>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

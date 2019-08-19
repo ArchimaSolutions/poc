@@ -1,0 +1,43 @@
+.smallBox {
+    border: 1px solid black;
+    width: 40px;
+    height: 5px;
+    background-color: grey;
+    margin-bottom: 10px;
+}
+.lineBox {
+    border: 1px solid black;
+    height: 1px;
+    background-color: black;
+    margin: 10px 0px;
+}
+.indent {
+    margin-left: 5%;
+}
+h3 {
+    font-size: 18pt;
+}
+h4 {
+    font-size: 16pt;
+}
+.smallTitle {
+    font-weight: bold;
+    margin: 10px 0px;
+}
+.rightMargin {
+    padding-right: 5%;
+    padding-left: 2%;
+    line-height: 1.6;
+}
+.tabTitle {
+    font-size: 14pt;
+}
+select {
+    margin: 10px 0px;
+    width: 40%;
+}
+.lTab {
+    border: 1px solid grey;
+    margin-top: 50px;
+    padding: 20px;
+}

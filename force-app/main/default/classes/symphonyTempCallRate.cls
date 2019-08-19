@@ -1,10 +1,12 @@
 public with sharing class symphonyTempCallRate {
     @InvocableMethod(label='Get Account Names')
     public static List<String> symphonyGetRate(List<Id> quoteId) {
+        Quote quote = [Select Id, Opportunity.Id, Opportunity.Account.Name FROM Quote WHERE Id = :quoteId LIMIT 1];
+
         AnthemAPI.RatingRequest ratingRequest = new AnthemAPI.RatingRequest();
-        ratingRequest.groupName = 'Bob\'s Bate';
-        ratingRequest.opportunityID = 'ASA3434';
-        ratingRequest.quoteHeaderID = '0034242';
+        ratingRequest.groupName = quote.Opportunity.Account.Name;
+        ratingRequest.opportunityID = quote.opportunity.Id;
+        ratingRequest.quoteHeaderID = quote.Id;
         ratingRequest.sicCode = 3999;
         ratingRequest.state = 'OH';
         ratingRequest.companyZip = 43085;
@@ -32,7 +34,7 @@ public with sharing class symphonyTempCallRate {
             //rrp.quoteLineItemID = 'xxxx1223';
             rrp.quoteLineItemID = qli.Id;
             rrp.fundingType = 'FI';
-            if(qli.Product2.Contract_Code__c == '51RXQQQ') {
+            if(qli.Product2.Contract_Code__c == '51RX') {
                 rrp.productID = Integer.valueOf('42459');
                 system.debug('Prod Id=' + rrp.productID);
                 rrp.contractCode = '50BN';
@@ -76,11 +78,20 @@ public with sharing class symphonyTempCallRate {
         AnthemAPI.RatingResponse ratingResponse = AnthemAPI.getRatings(ratingRequest);
         
         
-        allqli[0].UnitPrice = ratingResponse.rateInfo[0].single;
-        //allqli[1].UnitPrice = ratingResponse.rateInfo[1].single;
-        //allqli[2].UnitPrice = ratingResponse.rateInfo[2].single;
+        for(Integer y=0; y< 3; y++) {
+            allqli[y].UnitPrice = ratingResponse.rateInfo[y].single;
+            allqli[y].rate_single_number__c = ratingResponse.rateInfo[y].single;
+            allqli[y].rate_eeChildren__c = ratingResponse.rateInfo[y].eeChildren;
+            allqli[y].rate_family__c = ratingResponse.rateInfo[y].family;
+            allqli[y].rate_twoParty__c = ratingResponse.rateInfo[y].twoParty;
+            allqli[y].sym_monthlyPremium__c = ratingResponse.rateInfo[y].monthlyPremium;
+        }
+
 
         update allqli;
+
+        quote.Symphony_Status__c = 'Plan Selection';
+        update quote;
         
         List<String> temp = new List<String>();
         temp.add(ratingResponse.toString());

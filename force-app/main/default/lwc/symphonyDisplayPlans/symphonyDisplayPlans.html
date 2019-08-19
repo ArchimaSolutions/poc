@@ -1,13 +1,18 @@
 <template>
         <template if:true={result}>
-            <div class="total">{result}</div>
+            <!--<div class="soldResult">{result}</div> -->
         </template>
         <div class="slds-grid slds-gutters slds-wrap">
-        <template for:each={quoteData.QuoteLineItems} for:item="lineItem">
-            <div class="slds-col slds-size_1-of-3 slds-m-bottom_large" key={lineItem.Id} data-item={lineItem.Id} onclick={selectPlan}>
+        <template for:each={quoteData.QuoteLineItems} for:item="lineItem" for:index="index">
+            <div class="slds-col slds-size_1-of-3 slds-m-bottom_large" key={lineItem.Id} data-item={index} onclick={selectPlan}>
                 <div class="plan">{lineItem.Product2.Name}</div>
-                <div class="rating">Average Monthly Premium</div>
-                <div class="total">${lineItem.UnitPrice}</div>
+                <template if:true={lineItem.sym_IsSold__c}>
+                    <div class="rating">Average Monthly Premium &#9989;</div>
+                </template>
+                <template if:false={lineItem.sym_IsSold__c}>
+                    <div class="rating">Average Monthly Premium</div>
+                    </template>                
+                <div class="total">{lineItem.UnitPrice}</div>
                 <div class="right">{lineItem.Product2.E2E_Symphony_Deductible__c}</div>
                 <div class="left">Deductible</div><br/>
                 <div class="right">{lineItem.Product2.E2E_Symphony_Primary_Care_Copay__c}</div>
@@ -27,6 +32,9 @@
                 <div class="left">Rx Plan</div><br/>
                 <div class="right">{lineItem.Product2.E2E_Symphony_Preventative_Drugs_Covered__c}</div>
                 <div class="left">Preventative Drugs Covered</div><br/>
+                <div class="slds-align_absolute-center slds-m-top_large">
+                    <lightning-button label="Modify Plan" variant="brand" data-item={lineItem.Contract_Codes__c} onclick={navigateToComponent}></lightning-button>
+                </div><br/>
             </div>    
         </template>
       </div>

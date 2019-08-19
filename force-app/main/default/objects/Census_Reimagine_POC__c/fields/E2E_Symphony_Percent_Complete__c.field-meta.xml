@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>E2E_Symphony_Percent_Complete__c</fullName>
+    <description>Shows the percentage complete based on the number of fields input</description>
+    <externalId>false</externalId>
+    <formula>(
+MIN(1, BLANKVALUE(Employee_Cobra__c,0))+
+MIN(1, BLANKVALUE(Employee_active__c,0))+
+MIN(1, BLANKVALUE(Employee_retiree__c,0 ))+
+MIN(1, BLANKVALUE(Employee_total__c,0 ))+
+MIN(1, BLANKVALUE(Employee_with_dependents__c,0 ))+
+MIN(1, BLANKVALUE( Number_Employee_Spouse__c ,0 ))+
+MIN(1, BLANKVALUE(Number_below_20__c,0 ))+
+MIN(1, BLANKVALUE(Number_Between_21_30__c,0 ))+
+MIN(1, BLANKVALUE( Number_between_31_40__c,0 ))+
+MIN(1, BLANKVALUE(Number_between_41_50__c,0 ))+
+MIN(1, BLANKVALUE(Number_between_51_60__c,0 ))+
+MIN(1, BLANKVALUE( Number_over_60__c,0 ))+
+MIN(1, BLANKVALUE( Number_of_family_plans__c ,0 ))+
+MIN(1, BLANKVALUE( Number_of_Female__c ,0 ))+
+MIN(1, BLANKVALUE( Number_of_individual_plans__c ,0 ))+
+MIN(1, BLANKVALUE( Number_of_Male__c ,0 ))
+
+) 
+
+/16</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>% Complete</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Percent</type>
+</CustomField>

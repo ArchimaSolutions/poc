@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="HelloWorld" icon-name="custom:custom14">
+        <div class="slds-m-around_medium">
+            <p class="class1">WELCOME BACK</p>
+            <p class="class2">{name}</p>
+        </div>
+
+        <template if:true={Opportunities}>
+            <template for:each={Opportunities} for:item="opp">
+                <p key={opp.id}> A-{opp} </p>
+            </template>
+        </template>
+    </lightning-card>
+</template>

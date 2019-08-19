@@ -1,0 +1,5 @@
+Hello, <br><br>
+
+  The status on your quote {!Quote.Name} has been updated to: {!Quote.Symphony_Status__c}.  Our associate, Danny Leblanc, has been assigned to you.<br><br>
+
+The Symphony Team

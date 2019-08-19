@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Symphony_Letterhead</letterhead>
+    <name>Symphony Case Sold</name>
+    <style>freeForm</style>
+    <subject>The case has been sold!</subject>
+    <textOnly>The case has been sold and is now moving into the post sale life cycle. Thank you for all your hard work.
+
+The Symphony Team
+
+Surprise!</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

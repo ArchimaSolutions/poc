@@ -17,6 +17,13 @@
     padding: 10px 0px;
 }
 
+.soldResult {
+    font-size: 12pt;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px 0px;
+}
+
 .highlight {
     border: 2px solid yellow;
 }

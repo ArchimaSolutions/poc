@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Used for broker emails for the symphony poc.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Symphony Email Broker</name>
+    <style>none</style>
+    <subject>The status of a quote you are working on has been updated</subject>
+    <textOnly>Hello,  The status on your quote {!Quote.Name} has been updated to: {!Quote.Symphony_Status__c}.  The Symphony Team</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

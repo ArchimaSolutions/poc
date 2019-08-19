@@ -1,0 +1,6 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[Dear {!Soldcase_Symphony__c.Broker_Name__c},<div><br></div><div>&nbsp;&nbsp;{!Soldcase_Symphony__c.Signed_Employer_First_Name__c}&nbsp;{!Soldcase_Symphony__c.Signed_Employer_Last_Name__c} has signed the proposal and now requires your attention.&nbsp;</div><div><br></div><div>&nbsp; Please click <a href="http://BrokerPortal.Fake.com/welcome?quoteId={!Soldcase_Symphony__c.QuoteId__c}">here</a>&nbsp;to view the proposal.</div><div><br></div><div>The Symphony Team.</div>]]></td>
+</tr>
+</table>

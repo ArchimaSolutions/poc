@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This will be called from process builder and will update the sold case record to Sent to Employer.</description>
+    <interviewLabel>Symphony Update Sold Case to Sent to Employer {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Symphony Update Sold Case to Sent to Employer</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>This will update the record.</description>
+        <name>Update_the_Sold_Case_Record</name>
+        <label>Update the Sold Case Record</label>
+        <locationX>209</locationX>
+        <locationY>50</locationY>
+        <filters>
+            <field>Quote__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Sold_Case_Status__c</field>
+            <value>
+                <stringValue>Sent to Employer</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Soldcase_Symphony__c</object>
+    </recordUpdates>
+    <startElementReference>Update_the_Sold_Case_Record</startElementReference>
+    <status>Draft</status>
+    <variables>
+        <description>Passed in from process builder.</description>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

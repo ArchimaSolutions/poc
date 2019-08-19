@@ -35,5 +35,3 @@ global with sharing class APISymphonyBrokerSign {
         public String salesForceQuoteId {get; set;}
     }
 }
-
-

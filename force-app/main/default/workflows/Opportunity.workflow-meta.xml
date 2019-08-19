@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Symphony_Case_Sold</fullName>
+        <description>Symphony Case Sold</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>danny.leblanc@archimasolutions.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Symphony_Case_Sold</template>
+    </alerts>
+</Workflow>

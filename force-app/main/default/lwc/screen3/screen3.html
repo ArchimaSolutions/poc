@@ -1,0 +1,78 @@
+<template>
+    <article class="slds-card">
+        <div class="slds-grid slds-gutters slds-m-left_medium">
+            <div class="slds-col slds-size_2-of-5 rightMargin">
+                <p class="smallTitle">{customerName}</p>
+                <p>{streetAddress}</p>
+                <p></p>
+                <p>SIC:{standardIndustrial}</p>
+                <p>Primary Contact: {firstName} {lastName}</p>
+                <p>Phone: {phone}</p>
+                <p>Email: {email}</p>
+                <div class="lineBox"></div>
+                <lightning-slider
+                    step="1"
+                    min="0"
+                    max="100"
+                    value={recommendationStrength}
+                    disabled
+                    class="slds-m-top_medium slds-m-bottom_medium"
+                >
+                </lightning-slider>
+                <p class="smallTitle">Recommendation Strength</p>
+                <p class="slds-m-bottom_small">Consider providing the following data to increase
+                the accuracy and strangth of your recommendation.</p>
+                <p class="indent">Annual Claims</p>
+                <p class="indent">Other Carrier Proposal</p>
+                <p class="indent">Current Summary of Benefits</p>
+            </div>
+            <div class="slds-col slds-size_3-of-5">
+                <h3>Let us help.</h3>
+                <div class="smallBox"></div>
+                <h4>We'll use this information to recommend the plan or plans that best fit your client's
+                needs. The more details you provide, the more reliable our recommendations will be.</h4>
+                <br />
+                <lightning-tabset>
+                    <lightning-tab label="Connect to Admin System" class="lTab">
+                        <p class="tabTitle">Connect to client's HR or benefits admin system:</p>
+                        <div class="smallBox"></div>
+                        <div class="slds-form-element">
+                            <div class="slds-form-element__control">
+                                <div class="slds-select_container slds-m-top_large slds-m-bottom_large">
+                                    <select class="slds-select" id="select-01">
+                                        <option value="">Select HR Platform</option>
+                                        <option>Work Day</option>
+                                        <option>Oracle Peoplesoft</option>
+                                        <option>HR Greenery</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="slds-button slds-button_brand">Connect</button>
+                    </lightning-tab>
+                    <lightning-tab label="Import Data" title="2nd tab extended title" class="lTab">
+                        <p class="tabTitle">Import Documents and Data</p>
+                        <div class="smallBox "></div>
+                        <button class="slds-button slds-button_brand slds-m-top_large slds-m-right_large">Upload Documents</button>
+                        <button class="slds-button slds-button_brand slds-m-top_large">Scan Documents</button>    
+                    </lightning-tab>
+                    <lightning-tab label="Enter Data" class="lTab">
+                        <p  class="tabTitle">Enter Data Manually</p>
+                        <div class="smallBox slds-m-bottom_large"></div>
+                        <div class="slds-form-element__control">
+                            <div class="slds-select_container slds-m-top_large slds-m-bottom_large">
+                                <select class="slds-select" id="select-02">
+                                    <option value="">Select Form Type</option>
+                                    <option>Form 1</option>
+                                    <option>Form 2</option>
+                                    <option>Form 3</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button class="slds-button slds-button_brand">Open Form</button>
+                    </lightning-tab>
+                </lightning-tabset>
+            </div>
+        </div>
+    </article>
+</template>
